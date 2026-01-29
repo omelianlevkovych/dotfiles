@@ -1,30 +1,53 @@
-# Prompt format
+# Starship prompt - Powerline style with rainbow separators
+
 format = """
+[](fg:#9A348E)\
 $username\
-$hostname\
+[](bg:#DA627D fg:#9A348E)\
 $directory\
+[](fg:#DA627D bg:#FCA17D)\
 $git_branch\
 $git_status\
+[](fg:#FCA17D bg:#86BBD8)\
 $cmd_duration\
+[](fg:#86BBD8 bg:#33658A)\
+$time\
+[](fg:#33658A)\
 $line_break\
 $character"""
 
+[username]
+show_always = true
+style_user = "bg:#9A348E fg:#FFFFFF"
+style_root = "bg:#9A348E fg:#FFFFFF"
+format = '[ $user ]($style)'
+
 [directory]
+style = "bg:#DA627D fg:#FFFFFF"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
 symbol = " "
-format = "[$symbol$branch]($style) "
+style = "bg:#FCA17D fg:#1C1C1C"
+format = '[ $symbol$branch ]($style)'
 
 [git_status]
-format = '([$all_status$ahead_behind]($style) )'
+style = "bg:#FCA17D fg:#1C1C1C"
+format = '[$all_status$ahead_behind]($style)'
+
+[cmd_duration]
+style = "bg:#86BBD8 fg:#1C1C1C"
+format = '[ 󰔛 $duration ]($style)'
+min_time = 500
 
 [time]
 disabled = false
-format = "[$time]($style) "
 time_format = "%H:%M"
+style = "bg:#33658A fg:#FFFFFF"
+format = '[  $time ]($style)'
 
 [character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](red)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
