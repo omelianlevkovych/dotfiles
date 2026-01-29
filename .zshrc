@@ -78,7 +78,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git docker kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,6 +120,15 @@ PATH=$PATH:/Users/omelianlevkovych/Projects/Templafy/DevConsole/shims/
 alias lg='lazygit'
 export PATH="$HOME/.local/bin:$PATH"
 
+# Better history settings
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY          # Share history between terminals
+setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicate entries
+setopt HIST_IGNORE_SPACE      # Don't record commands starting with space
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
+setopt INC_APPEND_HISTORY     # Add commands immediately to history
+
 # Starship prompt
 eval "$(starship init zsh)"
 
@@ -140,3 +149,14 @@ alias ll='eza -la --icons --group-directories-first --git --header'
 alias la='eza -a --icons --group-directories-first'
 alias lt='eza --tree --icons --level=2'
 alias l='eza -l --icons --group-directories-first --git'
+
+# fzf - fuzzy finder (Ctrl+R for history, Ctrl+T for files, Alt+C for cd)
+if [[ -f $(brew --prefix 2>/dev/null)/opt/fzf/shell/completion.zsh ]]; then
+    source $(brew --prefix)/opt/fzf/shell/completion.zsh
+    source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+elif [[ -f /usr/share/fzf/shell/key-bindings.zsh ]]; then
+    source /usr/share/fzf/shell/key-bindings.zsh
+fi
+
+# zoxide - smarter cd (use 'z' to jump to directories)
+eval "$(zoxide init zsh)"
