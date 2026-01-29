@@ -135,7 +135,8 @@ elif [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
 fi
 
 # Better ls with eza
-alias ls='eza --icons'
-alias ll='eza -la --icons'
-alias la='eza -a --icons'
-alias lt='eza --tree --icons'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -la --icons --group-directories-first --git --header'
+alias la='eza -a --icons --group-directories-first'
+alias lt='eza --tree --icons --level=2'
+alias l='eza -l --icons --group-directories-first --git'
