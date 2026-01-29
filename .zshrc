@@ -1,8 +1,7 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
 fpath=("/Users/omelianlevkovych/.oh-my-zsh/custom/completions" $fpath)
-autoload -Uz compinit
-compinit
+# Note: compinit is called by oh-my-zsh below
 # OPENSPEC:END
 
 
@@ -78,7 +77,8 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker kubectl)
+# Removed kubectl - it's very slow. Use 'source <(kubectl completion zsh)' when needed
+plugins=(git docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -133,10 +133,10 @@ setopt INC_APPEND_HISTORY     # Add commands immediately to history
 eval "$(starship init zsh)"
 
 # Zsh plugins (cross-platform: Mac Homebrew and Fedora paths)
-if [[ -f $(brew --prefix 2>/dev/null)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-    # Mac (Homebrew)
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    # Mac (Homebrew) - hardcoded path to avoid $(brew --prefix) overhead
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     # Fedora
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -151,9 +151,10 @@ alias lt='eza --tree --icons --level=2'
 alias l='eza -l --icons --group-directories-first --git'
 
 # fzf - fuzzy finder (Ctrl+R for history, Ctrl+T for files, Alt+C for cd)
-if [[ -f $(brew --prefix 2>/dev/null)/opt/fzf/shell/completion.zsh ]]; then
-    source $(brew --prefix)/opt/fzf/shell/completion.zsh
-    source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+if [[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ]]; then
+    # Mac (Homebrew) - hardcoded path to avoid $(brew --prefix) overhead
+    source /opt/homebrew/opt/fzf/shell/completion.zsh
+    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 elif [[ -f /usr/share/fzf/shell/key-bindings.zsh ]]; then
     source /usr/share/fzf/shell/key-bindings.zsh
 fi
