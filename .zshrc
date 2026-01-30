@@ -1,6 +1,6 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-fpath=("/Users/omelianlevkovych/.oh-my-zsh/custom/completions" $fpath)
+fpath=("$HOME/.oh-my-zsh/custom/completions" $fpath)
 # Note: compinit is called by oh-my-zsh below
 # OPENSPEC:END
 
@@ -113,9 +113,9 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-source /Users/omelianlevkovych/Projects/Templafy/DevConsole/bash/templafy-dev-completion.bash
-
-PATH=$PATH:/Users/omelianlevkovych/Projects/Templafy/DevConsole/shims/
+# Templafy DevConsole (Mac-specific, disabled on other systems)
+# source /Users/omelianlevkovych/Projects/Templafy/DevConsole/bash/templafy-dev-completion.bash
+# PATH=$PATH:/Users/omelianlevkovych/Projects/Templafy/DevConsole/shims/
 
 alias lg='lazygit'
 export PATH="$HOME/.local/bin:$PATH"
