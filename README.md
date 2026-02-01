@@ -12,3 +12,4 @@
 - lazygit
 - bat
 - ripgrep
+- fd
