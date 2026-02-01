@@ -20,20 +20,43 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         starship \
         zsh-autosuggestions \
         zsh-syntax-highlighting \
-        lazygit
+        lazygit \
+        bat \
+        ripgrep
 
 elif [[ -f /etc/fedora-release ]]; then
     echo "Detected Fedora - using dnf..."
 
+    # Enable COPR repos for packages not in default repos
+    sudo dnf copr enable -y atim/starship
+    sudo dnf copr enable -y dejan/lazygit
+
     sudo dnf install -y \
         tldr \
-        eza \
         fzf \
         zoxide \
         starship \
         zsh-autosuggestions \
         zsh-syntax-highlighting \
-        lazygit
+        lazygit \
+        bat \
+        ripgrep \
+        cargo
+
+    # Add cargo bin to PATH for this session
+    export PATH="$HOME/.cargo/bin:$PATH"
+
+    # eza not in Fedora repos, install via cargo
+    if ! command -v eza &> /dev/null; then
+        echo "Installing eza via cargo..."
+        cargo install eza
+    fi
+
+    # Ensure cargo bin is in PATH permanently
+    if ! grep -q '.cargo/bin' ~/.zshrc 2>/dev/null; then
+        echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+        echo "Added cargo bin to ~/.zshrc"
+    fi
 
 else
     echo "Unsupported OS. Add support for your package manager."
