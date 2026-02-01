@@ -22,7 +22,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         zsh-syntax-highlighting \
         lazygit \
         bat \
-        ripgrep
+        ripgrep \
+	fd
 
 elif [[ -f /etc/fedora-release ]]; then
     echo "Detected Fedora - using dnf..."
@@ -41,7 +42,8 @@ elif [[ -f /etc/fedora-release ]]; then
         lazygit \
         bat \
         ripgrep \
-        cargo
+        cargo \
+	fd
 
     # Add cargo bin to PATH for this session
     export PATH="$HOME/.cargo/bin:$PATH"
