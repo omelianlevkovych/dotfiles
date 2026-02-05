@@ -120,6 +120,17 @@ create_link "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
 # ~/.config/kitty
 create_link "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
 
+# zsh-history-substring-search (platform-specific source)
+echo ""
+echo "Setting up zsh-history-substring-search..."
+HSSS_TARGET="$HOME/.local/share/zsh-history-substring-search"
+if [[ "$PLATFORM" == "macOS" ]]; then
+    create_link "/opt/homebrew/share/zsh-history-substring-search" "$HSSS_TARGET"
+elif [[ -d "$HSSS_TARGET" && ! -L "$HSSS_TARGET" ]]; then
+    # Fedora: cloned directly by install.sh, nothing to link
+    echo "  OK: $HSSS_TARGET (installed directly)"
+fi
+
 # ~/.gitconfig (special handling)
 setup_gitconfig
 

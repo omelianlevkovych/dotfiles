@@ -27,6 +27,14 @@ elif [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+# zsh-history-substring-search (unified path via symlink on macOS, direct clone on Fedora)
+[[ -f "$HOME/.local/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && \
+    source "$HOME/.local/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+
+# History substring search key bindings (Up/Down arrows)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # Better ls with eza
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -la --icons --group-directories-first --git --header'

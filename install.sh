@@ -20,6 +20,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         starship \
         zsh-autosuggestions \
         zsh-syntax-highlighting \
+        zsh-history-substring-search \
         zsh-completions \
         lazygit \
         bat \
@@ -55,6 +56,13 @@ elif [[ -f /etc/fedora-release ]]; then
     if ! command -v eza &> /dev/null; then
         echo "Installing eza via cargo..."
         cargo install eza
+    fi
+
+    # zsh-history-substring-search not in Fedora repos, clone from GitHub
+    hsss_dir="$HOME/.local/share/zsh-history-substring-search"
+    if [[ ! -d "$hsss_dir" ]]; then
+        echo "Installing zsh-history-substring-search from GitHub..."
+        git clone https://github.com/zsh-users/zsh-history-substring-search.git "$hsss_dir"
     fi
 
     # Ensure cargo bin is in PATH permanently
