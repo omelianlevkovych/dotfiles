@@ -20,6 +20,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         starship \
         zsh-autosuggestions \
         zsh-syntax-highlighting \
+        zsh-completions \
         lazygit \
         bat \
         ripgrep \
@@ -31,6 +32,7 @@ elif [[ -f /etc/fedora-release ]]; then
     # Enable COPR repos for packages not in default repos
     sudo dnf copr enable -y atim/starship
     sudo dnf copr enable -y dejan/lazygit
+    sudo dnf copr enable -y @zsh-users/zsh-completions
 
     sudo dnf install -y \
         tldr \
@@ -39,6 +41,7 @@ elif [[ -f /etc/fedora-release ]]; then
         starship \
         zsh-autosuggestions \
         zsh-syntax-highlighting \
+        zsh-completions \
         lazygit \
         bat \
         ripgrep \

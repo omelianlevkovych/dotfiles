@@ -161,3 +161,4 @@ fi
 
 # zoxide - smarter cd (use 'z' to jump to directories)
 eval "$(zoxide init zsh)"
+export PATH="$HOME/.cargo/bin:$PATH"
