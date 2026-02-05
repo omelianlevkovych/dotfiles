@@ -1,0 +1,12 @@
+# Machine-specific git configuration
+# Copy this file to ~/.gitconfig.local and fill in your details
+
+[user]
+    name = Your Name
+    email = your@email.com
+
+# Optional: GPG signing
+# [user]
+#     signingkey = YOUR_KEY_ID
+# [commit]
+#     gpgsign = true
