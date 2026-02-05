@@ -31,3 +31,4 @@
     br = branch
     ci = commit
     lg = log --oneline --graph --decorate
+    ac = "!git add -A && git commit"
