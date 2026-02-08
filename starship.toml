@@ -1,51 +1,49 @@
-# Starship prompt - Powerline style with rainbow separators
+# Starship prompt - Powerline style with Gruvbox Dark colors
 
 format = """
-[](fg:#9A348E)\
 $username\
-[](bg:#DA627D fg:#9A348E)\
+[\uE0B4](bg:#689d6a fg:#cc241d)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[\uE0B4](fg:#689d6a bg:#98971a)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
+[\uE0B4](fg:#98971a bg:#458588)\
 $cmd_duration\
-[](fg:#86BBD8 bg:#33658A)\
-$time\
-[](fg:#33658A)\
-$line_break\
+[\uE0B4](fg:#458588) \
 $character"""
+
+right_format = """[\uE0B6](fg:#d65d0e)$time"""
 
 [username]
 show_always = true
-style_user = "bg:#9A348E fg:#FFFFFF"
-style_root = "bg:#9A348E fg:#FFFFFF"
+style_user = "bg:#cc241d fg:#ebdbb2"
+style_root = "bg:#cc241d fg:#ebdbb2"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:#DA627D fg:#FFFFFF"
+style = "bg:#689d6a fg:#1d2021"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
 symbol = " "
-style = "bg:#FCA17D fg:#1C1C1C"
+style = "bg:#98971a fg:#1d2021"
 format = '[ $symbol$branch ]($style)'
 
 [git_status]
-style = "bg:#FCA17D fg:#1C1C1C"
+style = "bg:#98971a fg:#1d2021"
 format = '[$all_status$ahead_behind]($style)'
 
 [cmd_duration]
-style = "bg:#86BBD8 fg:#1C1C1C"
+style = "bg:#458588 fg:#ebdbb2"
 format = '[ 󰔛 $duration ]($style)'
 min_time = 500
 
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "bg:#33658A fg:#FFFFFF"
+style = "bg:#d65d0e fg:#ebdbb2"
 format = '[  $time ]($style)'
 
 [character]
