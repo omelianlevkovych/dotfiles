@@ -54,3 +54,8 @@ fi
 # zoxide - smarter cd (use 'z' to jump to directories)
 eval "$(zoxide init zsh)"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Templafy DevConsole CLI
+export PATH="$PATH:$HOME/Projects/Templafy/DevConsole/shims"
+[[ -f "$HOME/Projects/Templafy/DevConsole/bash/templafy-dev-completion.bash" ]] && \
+    source "$HOME/Projects/Templafy/DevConsole/bash/templafy-dev-completion.bash"

@@ -32,3 +32,5 @@
     ci = commit
     lg = log --oneline --graph --decorate
     ac = "!git add -A && git commit"
+[credential "dev.azure.com"]
+	provider = azure-repos
